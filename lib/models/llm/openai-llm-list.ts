@@ -81,10 +81,27 @@ const GPT3_5Turbo: LLM = {
   }
 }
 
+// OpenAI Models (手動追加 最新のモデル) -----------------------------
+const GPT4oLatest: LLM = {
+  modelId: "chatgpt-4o-latest",
+  modelName: "GPT-4o Latest",
+  provider: "openai",
+  hostedId: "chatgpt-4o-latest",
+  platformLink: OPENAI_PLATORM_LINK,
+  imageInput: true,
+  pricing: {
+    currency: "USD",
+    unit: "1M tokens",
+    inputCost: 2.5,
+    outputCost: 10
+  }
+}
+
 export const OPENAI_LLM_LIST: LLM[] = [
   GPT4o,
   GPT4Turbo,
   GPT4Vision,
   GPT4,
-  GPT3_5Turbo
+  GPT3_5Turbo,
+  GPT4oLatest
 ]
