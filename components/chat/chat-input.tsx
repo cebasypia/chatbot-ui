@@ -20,6 +20,7 @@ import { useChatHandler } from "./chat-hooks/use-chat-handler"
 import { useChatHistoryHandler } from "./chat-hooks/use-chat-history"
 import { usePromptAndCommand } from "./chat-hooks/use-prompt-and-command"
 import { useSelectFileHandler } from "./chat-hooks/use-select-file-handler"
+import { useMobile } from "@/components/chat/chat-hooks/use-mobile"
 
 interface ChatInputProps {}
 
@@ -73,6 +74,8 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
     setNewMessageContentToPreviousUserMessage
   } = useChatHistoryHandler()
 
+  const { isMobile } = useMobile()
+
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -82,7 +85,7 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
   }, [selectedPreset, selectedAssistant])
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (!isTyping && event.key === "Enter" && !event.shiftKey) {
+    if (!isTyping && !isMobile && event.key === "Enter" && !event.shiftKey) {
       event.preventDefault()
       setIsPromptPickerOpen(false)
       handleSendMessage(userInput, chatMessages, false)
