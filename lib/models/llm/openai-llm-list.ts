@@ -97,11 +97,28 @@ const GPT4oLatest: LLM = {
   }
 }
 
+// OpenAI Models (手動追加 o1-mini) -----------------------------
+const O1Mini: LLM = {
+  modelId: "o1-mini",
+  modelName: "o1-mini",
+  provider: "openai",
+  hostedId: "o1-mini",
+  platformLink: OPENAI_PLATORM_LINK,
+  imageInput: true,
+  pricing: {
+    currency: "USD",
+    unit: "1M tokens",
+    inputCost: 3,
+    outputCost: 11
+  }
+}
+
 export const OPENAI_LLM_LIST: LLM[] = [
   GPT4o,
   GPT4Turbo,
   GPT4Vision,
   GPT4,
   GPT3_5Turbo,
-  GPT4oLatest
+  GPT4oLatest,
+  O1Mini
 ]
